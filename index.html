@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>JME Gestão de Condomínios – Serviços Especializados</title>
+<style>
+  :root {
+    --blue:   #1a6e8e;
+    --blue2:  #0d4f6a;
+    --green:  #7dc242;
+    --green2: #5a9e2f;
+    --light:  #f4faff;
+    --gray:   #5a6a75;
+    --white:  #ffffff;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Segoe UI',Arial,sans-serif;color:#222;background:#fff;}
+
+  /* ── NAV ── */
+  nav{
+    position:sticky;top:0;z-index:100;
+    background:var(--blue2);
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 40px;box-shadow:0 2px 12px rgba(0,0,0,.25);
+  }
+  .nav-brand{color:#fff;font-size:1.4rem;font-weight:800;letter-spacing:1px;}
+  .nav-brand span{color:var(--green);}
+  nav ul{list-style:none;display:flex;gap:28px;}
+  nav ul li a{color:#dff0ff;text-decoration:none;font-size:.95rem;transition:color .2s;}
+  nav ul li a:hover{color:var(--green);}
+
+  /* ── HERO ── */
+  .hero{
+    background:linear-gradient(135deg,var(--blue2) 0%,var(--blue) 60%,var(--green2) 100%);
+    color:#fff;text-align:center;padding:90px 20px 80px;
+    position:relative;overflow:hidden;
+  }
+  .hero::before{
+    content:'';position:absolute;inset:0;
+    background:url('https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1400&q=60') center/cover no-repeat;
+    opacity:.12;
+  }
+  .hero-content{position:relative;z-index:1;max-width:780px;margin:auto;}
+  .badge{
+    display:inline-block;background:var(--green);color:#fff;
+    font-size:.8rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+    padding:6px 18px;border-radius:20px;margin-bottom:20px;
+  }
+  .hero h1{font-size:2.8rem;font-weight:900;line-height:1.15;margin-bottom:18px;text-shadow:0 2px 8px rgba(0,0,0,.3);}
+  .hero h1 span{color:var(--green);}
+  .hero p{font-size:1.18rem;opacity:.9;margin-bottom:36px;line-height:1.7;}
+  .btn-hero{
+    display:inline-block;background:var(--green);color:#fff;
+    padding:16px 40px;border-radius:50px;font-size:1.05rem;font-weight:700;
+    text-decoration:none;box-shadow:0 4px 18px rgba(125,194,66,.45);
+    transition:transform .2s,box-shadow .2s;
+  }
+  .btn-hero:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(125,194,66,.55);}
+
+  /* ── DIFERENCIAIS ── */
+  .diff{background:var(--light);padding:64px 20px;}
+  .section-title{text-align:center;margin-bottom:48px;}
+  .section-title h2{font-size:2rem;color:var(--blue2);font-weight:800;}
+  .section-title p{color:var(--gray);margin-top:8px;font-size:1.05rem;}
+  .diff-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:28px;max-width:1100px;margin:auto;}
+  .diff-card{
+    background:#fff;border-radius:16px;padding:32px 28px;text-align:center;
+    flex:1 1 220px;max-width:240px;
+    box-shadow:0 4px 20px rgba(26,110,142,.10);
+    transition:transform .2s,box-shadow .2s;
+  }
+  .diff-card:hover{transform:translateY(-6px);box-shadow:0 8px 32px rgba(26,110,142,.18);}
+  .diff-icon{font-size:2.6rem;margin-bottom:14px;}
+  .diff-card h3{color:var(--blue);font-size:1.05rem;font-weight:700;margin-bottom:8px;}
+  .diff-card p{color:var(--gray);font-size:.9rem;line-height:1.6;}
+
+  /* ── SERVIÇOS ── */
+  .services{padding:70px 20px;background:#fff;}
+  .services-grid{display:flex;flex-wrap:wrap;gap:28px;max-width:1150px;margin:auto;justify-content:center;}
+  .srv-card{
+    flex:1 1 300px;max-width:340px;border-radius:16px;overflow:hidden;
+    box-shadow:0 4px 22px rgba(26,110,142,.13);transition:transform .2s,box-shadow .2s;
+  }
+  .srv-card:hover{transform:translateY(-6px);box-shadow:0 10px 36px rgba(26,110,142,.22);}
+  .srv-img{width:100%;height:200px;object-fit:cover;display:block;}
+  .srv-body{padding:22px 22px 24px;}
+  .srv-body h3{color:var(--blue2);font-size:1.05rem;font-weight:800;margin-bottom:8px;}
+  .srv-body p{color:var(--gray);font-size:.9rem;line-height:1.6;}
+  .srv-tag{
+    display:inline-block;background:var(--green);color:#fff;
+    font-size:.72rem;font-weight:700;padding:3px 10px;border-radius:12px;margin-bottom:10px;
+    letter-spacing:.5px;text-transform:uppercase;
+  }
+
+  /* ── SOBRE ── */
+  .about{background:linear-gradient(135deg,var(--blue2),var(--blue));color:#fff;padding:80px 20px;}
+  .about-inner{max-width:900px;margin:auto;display:flex;flex-wrap:wrap;gap:40px;align-items:center;}
+  .about-img-wrap{flex:0 0 260px;}
+  .about-img-wrap img{width:100%;border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.35);object-fit:cover;height:300px;}
+  .about-text{flex:1;min-width:260px;}
+  .about-text h2{font-size:1.9rem;font-weight:900;margin-bottom:16px;color:#fff;}
+  .about-text h2 span{color:var(--green);}
+  .about-text p{opacity:.9;line-height:1.8;margin-bottom:12px;font-size:1rem;}
+  .exp-badge{
+    display:inline-flex;align-items:center;gap:10px;
+    background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+    border-radius:12px;padding:12px 20px;margin-top:10px;
+  }
+  .exp-num{font-size:2.5rem;font-weight:900;color:var(--green);line-height:1;}
+  .exp-label{font-size:.9rem;opacity:.85;line-height:1.4;}
+
+  /* ── DEPOIMENTOS ── */
+  .testimonials{padding:70px 20px;background:var(--light);}
+  .test-grid{display:flex;flex-wrap:wrap;gap:24px;max-width:1100px;margin:auto;justify-content:center;}
+  .test-card{
+    background:#fff;border-radius:14px;padding:28px 26px;flex:1 1 280px;max-width:340px;
+    box-shadow:0 4px 18px rgba(26,110,142,.10);
+    border-left:4px solid var(--green);
+  }
+  .test-card p{color:var(--gray);font-size:.95rem;line-height:1.7;margin-bottom:16px;font-style:italic;}
+  .test-author{font-weight:700;color:var(--blue);font-size:.9rem;}
+  .test-condo{color:var(--gray);font-size:.82rem;}
+  .stars{color:#f5a623;font-size:1.1rem;margin-bottom:10px;}
+
+  /* ── CTA ── */
+  .cta{
+    background:linear-gradient(135deg,var(--green2),var(--green));
+    color:#fff;text-align:center;padding:70px 20px;
+  }
+  .cta h2{font-size:2rem;font-weight:900;margin-bottom:12px;}
+  .cta p{font-size:1.1rem;opacity:.9;margin-bottom:32px;}
+  .cta-btns{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;}
+  .btn-wpp{
+    display:inline-flex;align-items:center;gap:10px;
+    background:#fff;color:var(--green2);font-weight:800;font-size:1rem;
+    padding:16px 36px;border-radius:50px;text-decoration:none;
+    box-shadow:0 4px 18px rgba(0,0,0,.15);transition:transform .2s;
+  }
+  .btn-wpp:hover{transform:translateY(-3px);}
+  .btn-outline{
+    display:inline-flex;align-items:center;gap:10px;
+    background:transparent;color:#fff;font-weight:700;font-size:1rem;
+    padding:16px 36px;border-radius:50px;text-decoration:none;
+    border:2px solid rgba(255,255,255,.6);transition:background .2s;
+  }
+  .btn-outline:hover{background:rgba(255,255,255,.15);}
+
+  /* ── FOOTER ── */
+  footer{background:var(--blue2);color:#acd4e8;text-align:center;padding:28px 20px;font-size:.88rem;}
+  footer strong{color:var(--green);}
+
+  /* ── RESPONSIVE ── */
+  @media(max-width:650px){
+    .hero h1{font-size:2rem;}
+    nav ul{display:none;}
+    .about-img-wrap{flex:0 0 100%;}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">JME <span>Gestão de Condomínios</span></div>
+  <ul>
+    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#depoimentos">Avaliações</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="badge">✅ Condomínios de Alto Padrão</div>
+    <h1>Reparos e Serviços<br/>com <span>Qualidade Garantida</span></h1>
+    <p>Mais de 30 anos de experiência em obras, reformas e manutenção predial.<br/>
+       Atendimento ágil, discreto e profissional para moradores e síndicos.</p>
+    <a href="#contato" class="btn-hero">📞 Solicitar Orçamento Gratuito</a>
+  </div>
+</section>
+
+<!-- DIFERENCIAIS -->
+<section class="diff">
+  <div class="section-title">
+    <h2>Por que escolher a JME?</h2>
+    <p>Comprometimento, pontualidade e serviço bem feito desde o primeiro dia.</p>
+  </div>
+  <div class="diff-grid">
+    <div class="diff-card">
+      <div class="diff-icon">🏆</div>
+      <h3>+30 Anos de Experiência</h3>
+      <p>Profissional com longa trajetória em obras residenciais e prediais de alto padrão.</p>
+    </div>
+    <div class="diff-card">
+      <div class="diff-icon">⚡</div>
+      <h3>Atendimento Rápido</h3>
+      <p>Resposta ágil para urgências e reparos emergenciais no seu condomínio.</p>
+    </div>
+    <div class="diff-card">
+      <div class="diff-icon">🔒</div>
+      <h3>Segurança e Discrição</h3>
+      <p>Serviço realizado com respeito às normas do condomínio e à privacidade dos moradores.</p>
+    </div>
+    <div class="diff-card">
+      <div class="diff-icon">📋</div>
+      <h3>Orçamento Transparente</h3>
+      <p>Sem surpresas: preço justo e detalhado antes do início de qualquer serviço.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SERVIÇOS -->
+<section class="services" id="servicos">
+  <div class="section-title">
+    <h2>Nossos Serviços</h2>
+    <p>Soluções completas para manutenção e valorização do seu imóvel.</p>
+  </div>
+  <div class="services-grid">
+
+    <div class="srv-card">
+      <img class="srv-img" src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=70" alt="Alvenaria e Revestimentos"/>
+      <div class="srv-body">
+        <div class="srv-tag">Alvenaria</div>
+        <h3>Alvenaria e Revestimentos</h3>
+        <p>Construção de paredes, fechamentos, aplicação de argamassa, cerâmica, porcelanato e pastilhas.</p>
+      </div>
+    </div>
+
+    <div class="srv-card">
+      <img class="srv-img" src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=600&q=70" alt="Pintura e Acabamento"/>
+      <div class="srv-body">
+        <div class="srv-tag">Pintura</div>
+        <h3>Pintura e Acabamento</h3>
+        <p>Pintura interna e externa, textura, massa corrida, rejuntamento e acabamentos finos.</p>
+      </div>
+    </div>
+
+    <div class="srv-card">
+      <img class="srv-img" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=70" alt="Impermeabilização"/>
+      <div class="srv-body">
+        <div class="srv-tag">Impermeabilização</div>
+        <h3>Impermeabilização</h3>
+        <p>Tratamento de lajes, varandas, banheiros e áreas úmidas para evitar infiltrações e umidade.</p>
+      </div>
+    </div>
+
+    <div class="srv-card">
+      <img class="srv-img" src="https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?w=600&q=70" alt="Hidráulica Básica"/>
+      <div class="srv-body">
+        <div class="srv-tag">Hidráulica</div>
+        <h3>Hidráulica Básica</h3>
+        <p>Troca de registros, reparos em encanamentos, conserto de vazamentos e instalação de louças.</p>
+      </div>
+    </div>
+
+    <div class="srv-card">
+      <img class="srv-img" src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=70" alt="Reforma de Banheiros e Cozinhas"/>
+      <div class="srv-body">
+        <div class="srv-tag">Reforma</div>
+        <h3>Reforma de Banheiros e Cozinhas</h3>
+        <p>Reforma completa ou parcial com troca de revestimentos, box, pias e armários.</p>
+      </div>
+    </div>
+
+    <div class="srv-card">
+      <img class="srv-img" src="https://images.unsplash.com/photo-1541123437800-1bb1317badc2?w=600&q=70" alt="Pequenos Reparos Gerais"/>
+      <div class="srv-body">
+        <div class="srv-tag">Manutenção</div>
+        <h3>Pequenos Reparos Gerais</h3>
+        <p>Fixação de itens, reparos em paredes, pisos, tetos e qualquer demanda do dia a dia do condomínio.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section class="about" id="sobre">
+  <div class="about-inner">
+    <div class="about-img-wrap">
+      <img src="https://images.unsplash.com/photo-1614977645540-7abd88ba8e6a?w=500&q=70" alt="Profissional experiente"/>
+    </div>
+    <div class="about-text">
+      <h2>Experiência que<br/><span>você pode confiar</span></h2>
+      <p>A JME Gestão de Condomínios oferece um profissional de altíssima qualidade técnica, com décadas de atuação em obras residenciais, prediais e comerciais de alto padrão na região.</p>
+      <p>Conhecemos as exigências de um condomínio premium: prazos, limpeza do ambiente, respeito às normas internas e resultado impecável. Nosso objetivo é ser o parceiro de confiança do seu síndico e da sua administradora.</p>
+      <div class="exp-badge">
+        <div class="exp-num">30+</div>
+        <div class="exp-label">anos de experiência<br/>no mercado da construção</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section class="testimonials" id="depoimentos">
+  <div class="section-title">
+    <h2>O que dizem nossos clientes</h2>
+    <p>Avaliações reais de moradores e síndicos satisfeitos.</p>
+  </div>
+  <div class="test-grid">
+    <div class="test-card">
+      <div class="stars">★★★★★</div>
+      <p>"Serviço impecável! O profissional chegou no horário combinado, deixou tudo limpo e o resultado ficou perfeito. Recomendo sem hesitar."</p>
+      <div class="test-author">Andréa M.</div>
+      <div class="test-condo">Moradora · Edifício Vista Mar</div>
+    </div>
+    <div class="test-card">
+      <div class="stars">★★★★★</div>
+      <p>"Contratei para um reparo urgente em um apartamento e fiquei muito satisfeita com a agilidade e qualidade do serviço. Preço justo e sem surpresas."</p>
+      <div class="test-author">Carlos R.</div>
+      <div class="test-condo">Síndico · Residencial Parque Sul</div>
+    </div>
+    <div class="test-card">
+      <div class="stars">★★★★★</div>
+      <p>"Reforma de banheiro entregue antes do prazo e com acabamento de primeira. Excelente profissional, já indiquei para todos os vizinhos."</p>
+      <div class="test-author">Fernanda L.</div>
+      <div class="test-condo">Moradora · Condomínio Alto da Serra</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA / CONTATO -->
+<section class="cta" id="contato">
+  <h2>Precisa de um reparo ou reforma?</h2>
+  <p>Entre em contato agora e receba um orçamento gratuito e sem compromisso.</p>
+  <div class="cta-btns">
+    <a href="https://wa.me/5527996614354?text=Olá!%20Vi%20o%20site%20da%20JME%20e%20gostaria%20de%20um%20orçamento." class="btn-wpp" target="_blank">
+      💬 Falar pelo WhatsApp
+    </a>
+    <a href="mailto:contato@jmecondominos.com.br" class="btn-outline">
+      ✉️ Enviar E-mail
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 <strong>JME Gestão de Condomínios</strong> — Todos os direitos reservados.</p>
+  <p style="margin-top:6px;">Desenvolvido com dedicação para servir melhor você.</p>
+</footer>
+
+</body>
+</html>
