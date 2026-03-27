@@ -23,9 +23,9 @@
     position:sticky;top:0;z-index:100;
     background:var(--blue2);
     display:flex;align-items:center;justify-content:space-between;
-    padding:14px 40px;box-shadow:0 2px 12px rgba(0,0,0,.25);
+    padding:10px 40px;box-shadow:0 2px 12px rgba(0,0,0,.25);
   }
-  .nav-brand{color:#fff;font-size:1.4rem;font-weight:800;letter-spacing:1px;}
+  .nav-brand{color:#fff;font-size:1.4rem;font-weight:800;letter-spacing:1px;text-decoration:none;}
   .nav-brand span{color:var(--green);}
   nav ul{list-style:none;display:flex;gap:28px;}
   nav ul li a{color:#dff0ff;text-decoration:none;font-size:.95rem;transition:color .2s;}
@@ -149,12 +149,19 @@
 
   /* ── FOOTER ── */
   footer{background:var(--blue2);color:#acd4e8;text-align:center;padding:28px 20px;font-size:.88rem;}
+  .footer-logo{
+    height:64px;width:auto;display:block;margin:0 auto 12px;
+    filter:drop-shadow(0 2px 8px rgba(0,0,0,.28));
+  }
   footer strong{color:var(--green);}
 
   /* ── RESPONSIVE ── */
   @media(max-width:650px){
     .hero h1{font-size:2rem;}
     nav ul{display:none;}
+    nav{padding:10px 20px;}
+    .nav-brand{font-size:1.1rem;}
+    .footer-logo{height:54px;}
     .about-img-wrap{flex:0 0 100%;}
   }
 </style>
@@ -163,11 +170,10 @@
 
 <!-- NAV -->
 <nav>
-  <div class="nav-brand">JME <span>Gestão de Condomínios</span></div>
+  <a class="nav-brand" href="#" aria-label="JME Gestão de Condomínios - Ir para o topo">JME <span>Gestão de Condomínios</span></a>
   <ul>
     <li><a href="#servicos">Serviços</a></li>
     <li><a href="#sobre">Sobre</a></li>
-    <li><a href="#depoimentos">Avaliações</a></li>
     <li><a href="#contato">Contato</a></li>
   </ul>
 </nav>
@@ -175,12 +181,11 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-content">
-    <div class="badge">✅ Condomínios de Alto Padrão</div>
     <h1>Reparos e Serviços<br/>com <span>Qualidade Garantida</span></h1>
     <p>Mais de 30 anos de experiência em obras, reformas e manutenção predial.<br/>
        Atendimento ágil, discreto e profissional para moradores e síndicos.</p>
     <div>
-      <a href="https://wa.me/5527996614354?text=Olá!%20Vi%20o%20site%20da%20JME%20e%20gostaria%20de%20um%20orçamento." class="btn-hero" target="_blank">
+      <a href="https://wa.me/5527996614354?text=Olá!%20Vim%20pelo%20seu%20site%20da%20JME%20e%20gostaria%20de%20um%20orçamento." class="btn-hero" target="_blank">
         📞 Solicitar Orçamento Gratuito
       </a>
     </div>
@@ -302,7 +307,7 @@
   <h2>Precisa de um reparo ou reforma?</h2>
   <p>Entre em contato agora e receba um orçamento gratuito e sem compromisso.</p>
   <div>
-    <a href="https://wa.me/5527996614354?text=Olá!%20Vi%20o%20site%20da%20JME%20e%20gostaria%20de%20um%20orçamento." class="btn-hero" target="_blank">
+    <a href="https://wa.me/5527996614354?text=Olá!%20Vim%20pelo%20seu%20site%20da%20JME%20e%20gostaria%20de%20um%20orçamento." class="btn-hero" target="_blank">
       📞 Solicitar Orçamento Gratuito
     </a>
   </div>
@@ -310,6 +315,7 @@
 
 <!-- FOOTER -->
 <footer>
+  <img class="footer-logo" src="imagens/logo-jme.png" alt="Logo JME Gestão de Condomínios"/>
   <p>© 2025 <strong>JME Gestão de Condomínios</strong> — Todos os direitos reservados.</p>
 </footer>
 
